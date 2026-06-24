@@ -1,16 +1,10 @@
 namespace SunamoGenerators.Generators;
 
-/// <summary>
-/// Generates user-facing error messages from a list of files and their associated exceptions, splitting output into visible and collapsed sections.
-/// </summary>
 public class ErrorMessageGenerator
 {
     private StringBuilder visibleBuilder = new StringBuilder();
     private StringBuilder collapseBuilder = new StringBuilder();
 
-    /// <summary>
-    /// Gets the visible portion of the error message.
-    /// </summary>
     public string Visible
     {
         get
@@ -19,9 +13,6 @@ public class ErrorMessageGenerator
         }
     }
 
-    /// <summary>
-    /// Gets the collapsed portion of the error message.
-    /// </summary>
     public string Collapse
     {
         get
@@ -30,17 +21,11 @@ public class ErrorMessageGenerator
         }
     }
 
-    /// <summary>
-    /// Generates error messages from a list of erroneous files and their exceptions.
-    /// </summary>
-    /// <param name="errorFiles">List of file names that had errors.</param>
-    /// <param name="exceptions">List of file exceptions corresponding to each file.</param>
-    /// <param name="maxVisible">Maximum number of errors to show in the visible section.</param>
     public ErrorMessageGenerator(List<string> errorFiles, List<FileExceptions> exceptions, int maxVisible)
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            visibleBuilder.AppendLine("  t\u011Bchto souborech se vyskytly tyto chyby: ");
+            visibleBuilder.AppendLine("  těchto souborech se vyskytly tyto chyby: ");
         }
         else
         {
@@ -59,7 +44,7 @@ public class ErrorMessageGenerator
         string? errorAdvice = null;
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
         {
-            errorAdvice = "Pokud si mysl\u00EDte \u017Ee to je chyba aplikace, po\u0161lete pros\u00EDm mi email na adresu kter\u00E1 je uvedena v dialogu O aplikaci";
+            errorAdvice = "Pokud si myslíte že to je chyba aplikace, pošlete prosím mi email na adresu která je uvedena v dialogu O aplikaci";
         }
         else
         {
@@ -91,11 +76,11 @@ public class ErrorMessageGenerator
                 case FileExceptions.FileNotFound:
                     return Translate.FromKey(XlfKeys.FileNotFound);
                 case FileExceptions.UnauthorizedAccess:
-                    return "Program z\u0159ejm\u011B nem\u00E1 p\u0159\u00EDstup k souboru";
+                    return "Program zřejmě nemá přístup k souboru";
                 case FileExceptions.General:
-                    return "Nezn\u00E1m\u00E1 nebo obecn\u00E1 chyba";
+                    return "Neznámá nebo obecná chyba";
                 default:
-                    throw new Exception("Neimplementovan\u00E1 v\u011Btev");
+                    throw new Exception("Neimplementovaná větev");
             }
         }
         else
