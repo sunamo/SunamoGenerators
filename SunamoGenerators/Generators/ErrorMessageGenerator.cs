@@ -1,10 +1,16 @@
 namespace SunamoGenerators.Generators;
 
+/// <summary>
+/// Represents the error message generator type.
+/// </summary>
 public class ErrorMessageGenerator
 {
     private StringBuilder visibleBuilder = new StringBuilder();
     private StringBuilder collapseBuilder = new StringBuilder();
 
+    /// <summary>
+    /// The visible.
+    /// </summary>
     public string Visible
     {
         get
@@ -13,6 +19,9 @@ public class ErrorMessageGenerator
         }
     }
 
+    /// <summary>
+    /// The collapse.
+    /// </summary>
     public string Collapse
     {
         get
@@ -21,6 +30,10 @@ public class ErrorMessageGenerator
         }
     }
 
+    /// <summary>
+    /// Error message generator.
+    /// </summary>
+    /// <returns>The error message generator result.</returns>
     public ErrorMessageGenerator(List<string> errorFiles, List<FileExceptions> exceptions, int maxVisible)
     {
         if (CultureInfo.CurrentUICulture.TwoLetterISOLanguageName == "cs")
