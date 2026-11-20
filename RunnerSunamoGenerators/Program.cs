@@ -1,4 +1,3 @@
-// variables names: ok
 namespace RunnerSunamoGenerators;
 
 internal class Program
