@@ -29,7 +29,7 @@ public class ErrorMessageGenerator
         }
         else
         {
-            visibleBuilder.AppendLine(Translate.FromKey(XlfKeys.InTheseFilesTheFollowingErrorsOccurred) + ": ");
+            visibleBuilder.AppendLine("In these files the following errors occurred" + ": ");
         }
         if (errorFiles.Count < maxVisible)
         {
@@ -48,7 +48,7 @@ public class ErrorMessageGenerator
         }
         else
         {
-            errorAdvice = Translate.FromKey(XlfKeys.IfYouThinkThatThisIsApplicationErrorPleaseSendMeAnEmailAtTheAddressThatIsListedInTheAboutApp);
+            errorAdvice = "If you think that this is application error please send me an email at the address that is listed in the about app";
         }
         if (currentIndex == errorFiles.Count)
         {
@@ -74,7 +74,7 @@ public class ErrorMessageGenerator
                 case FileExceptions.None:
                     break;
                 case FileExceptions.FileNotFound:
-                    return Translate.FromKey(XlfKeys.FileNotFound);
+                    return "FileNotFound";
                 case FileExceptions.UnauthorizedAccess:
                     return "Program zřejmě nemá přístup k souboru";
                 case FileExceptions.General:
@@ -90,13 +90,13 @@ public class ErrorMessageGenerator
                 case FileExceptions.None:
                     break;
                 case FileExceptions.FileNotFound:
-                    return Translate.FromKey(XlfKeys.FileNotFound);
+                    return "FileNotFound";
                 case FileExceptions.UnauthorizedAccess:
-                    return Translate.FromKey(XlfKeys.TheProgramDoesNotHaveAccessToTheFile);
+                    return "The program does not have access to the file";
                 case FileExceptions.General:
-                    return Translate.FromKey(XlfKeys.UnknownOrGeneralError);
+                    return "Unknown or general error";
                 default:
-                    throw new Exception(Translate.FromKey(XlfKeys.NotImplementedCase));
+                    throw new Exception("NotImplementedCase");
             }
         }
         return "";
